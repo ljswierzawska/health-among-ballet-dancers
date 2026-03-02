@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- The title that appears in the browser tab -->
+  
   <title>Can Ballet Ever Be Healthy?</title>
-
-  <!-- Makes the page look correct on phones -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Google Fonts — loads Inter (clean sans-serif) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      margin: 0;                          /* no white gap around the edges */
-      background-color: #ffffff;          /* white background */
-      color: #1a1a1a;                     /* near-black text */
+      margin: 0;                          
+      background-color: #ffffff;          
+      color: #1a1a1a;                     
       font-family: 'Inter', system-ui, sans-serif;
       font-size: 19px;
-      line-height: 1.7;                   /* spacing between lines */
+      line-height: 1.7;                   
       text-rendering: optimizeLegibility;
     }
 
-    /* --- The centered text column (640px wide, centered) --- */
+    
     .content {
-      max-width: 640px;    /* maximum width of the text column */
-      margin: 0 auto;      /* auto left/right margin = centers it */
-      padding: 0 1.2em;    /* small side padding on mobile */
+      max-width: 640px;    
+      margin: 0 auto;      
+      padding: 0 1.2em;    
     }
 
-    /* --- Main headline --- */
+
     h1 {
       font-family: 'Inter', system-ui, sans-serif;
       font-size: 2.8em;
@@ -106,35 +102,35 @@
 
     .hero {
       background-image: url('https://images.unsplash.com/photo-1644959791599-cab3a28356cb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-      background-size: cover;           /* photo fills the full box */
-      background-position: center top;  /* center the photo */
-      background-attachment: fixed;     /* photo stays still as you scroll (parallax) */
+      background-size: cover;           
+      background-position: center top;  
+      background-attachment: fixed;     
 
-      min-height: 100vh;                /* at least as tall as the screen */
+      min-height: 100vh;                
       display: flex;
-      align-items: flex-end;            /* push text to the bottom */
+      align-items: flex-end;            
     }
 
-    /* The dark overlay that goes over the hero photo so text is readable */
+
     .hero-overlay {
       background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.85) 0%,    /* dark at the bottom (where title is) */
-        rgba(0, 0, 0, 0.15) 100%   /* light at the top */
+        rgba(0, 0, 0, 0.85) 0%,    
+        rgba(0, 0, 0, 0.15) 100%   
       );
       width: 100%;
       padding: 3em 1.5em 2.5em;
     }
 
-    /* The title and subtitle inside the hero */
+  
     .hero h1 {
-      color: #ffffff;    /* white text on the dark overlay */
+      color: #ffffff;    
       font-size: 3.2em;
       margin-bottom: 0.2em;
     }
 
     .hero .subtitle {
-      color: rgba(255, 255, 255, 0.75);   /* slightly transparent white */
+      color: rgba(255, 255, 255, 0.75);   
       font-size: 1.1em;
       font-style: italic;
       font-family: 'Inter', system-ui, sans-serif;
@@ -145,9 +141,9 @@
       background-image: url('photo2.jpeg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;     /* same parallax effect */
+      background-attachment: fixed;     
 
-      height: 60vh;                     /* 60% of screen height */
+      height: 60vh;                     
       margin: 3em 0;
     }
 
@@ -165,25 +161,19 @@
       color: #555555;
     }
 
-    /* =====================================================================
-       FADE-IN ANIMATION — elements with class "fade-in" start invisible
-       and appear when you scroll to them.
-       To use it: add class="fade-in" to any element.
-       ===================================================================== */
-
     .fade-in {
-      opacity: 0;                            /* starts invisible */
-      transform: translateY(20px);           /* starts slightly lower */
+      opacity: 0;                            
+      transform: translateY(20px);           
       transition: opacity 0.8s ease,
-                  transform 0.8s ease;       /* smooth transition */
+                  transform 0.8s ease;       
     }
 
     .fade-in.visible {
-      opacity: 1;                            /* becomes visible */
-      transform: translateY(0);             /* moves to normal position */
+      opacity: 1;                            
+      transform: translateY(0);             
     }
 
-    /* On phones: remove the fixed background (it doesn't work well on mobile) */
+    
     @media (max-width: 640px) {
       .hero, .photo-break {
         background-attachment: scroll;
@@ -239,16 +229,17 @@
     <div class="chart fade-in">
       <div style="min-height:600px" id="datawrapper-vis-YdcXo"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/YdcXo/embed.js" charset="utf-8" data-target="#datawrapper-vis-YdcXo"></script><noscript><img src="https://datawrapper.dwcdn.net/YdcXo/full.png" alt="Almost Every Professional Ballet Dancer Gets Injured Each Season (Split Bars)" /></noscript></div>
     </div>
+    
 
     <p class="fade-in">
-      Nowak sees some progress. The conversation about dancers' physicality has shifted towards strength training. 'There is more discussion about strengthening dancers' bodies so they are more resilient to injuries,' she said. 'That has a positive overall effect on how they are prepared to perform and how long they can sustain their careers.'
+      Nowak sees some progress. The conversation about dancers' physicality has shifted towards strength training. "There is more discussion about strengthening dancers' bodies so they are more resilient to injuries,"" she said. "That has a positive overall effect on how they are prepared to perform and how long they can sustain their careers.""
     </p>
 
     <p class="fade-in">
       Yet the larger problem may be psychological and linked to the negative body image.
     </p>
 
-  </div><!-- end .content -->
+  </div>
 
 
   <div class="photo-break"></div>
@@ -266,7 +257,19 @@
     </div>
 
     <p class="fade-in">
-      According to Nowak, a certain ideal body type still prevails. Even as standards begin to change, the constant focus on physique remains exhausting. “A few years ago, it was pretty normal for them to ask for your weight,” she said. “Or they would weigh you before rehearsals.”
+      According to Nowak, a certain ideal body type still prevails. Even as standards begin to change, the constant focus on physique remains exhausting. “A few years ago, it was pretty normal for ballet companies to ask for your weight,” she said. “Or they would weigh you before rehearsals.”
+    </p>
+
+    <p class="fade-in">
+      Fortunately, attitudes are beginning to change and ballet dancers are changing with them. There is growing awareness around nutrition and how young people can stay in shape without sacrificing proper nourishment.
+    </p>
+
+    <p class="fade-in">
+      Nowak says dancers are increasingly conscious of their eating habits. “It’s no longer just a cigarette and a coffee,” she laughed. And with therapy becoming more common, it’s something people actually talk about within ballet groups.
+    </p>
+
+    <p class="fade-in">
+      "Being a ballet dancer is simply exhausting. People think of it and think it’s so exciting — performing on the stage in front of an audience,” said Nowak. “The question is whether you have support through it all."
     </p>
 
   </div>
