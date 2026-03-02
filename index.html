@@ -37,24 +37,13 @@
       color: #000000;
     }
 
-    /* --- Section headings inside the article --- */
-    h2 {
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 1.4em;
-      font-weight: 700;
-      margin: 1.8em 0 0.4em 0;
-      color: #000000;
-    }
-
-    /* --- Regular paragraphs --- */
     p {
       margin: 0 0 1.2em 0;
     }
 
-    /* --- The byline (author + date line under the title) --- */
     .byline {
       font-size: 0.8em;
-      color: #888888;           /* light gray */
+      color: #888888;           
       letter-spacing: 0.05em;
       text-transform: uppercase;
       margin-bottom: 2em;
@@ -63,12 +52,11 @@
       padding: 0.6em 0;
     }
 
-    /* --- The short italic intro paragraph --- */
     .intro {
       font-style: italic;
       font-size: 1.1em;
       color: #333333;
-      border-left: 3px solid #000000;  /* black left border */
+      border-left: 3px solid #000000;  
       padding-left: 1em;
       margin-bottom: 1.8em;
     }
@@ -86,18 +74,8 @@
       margin: 1.8em 0;
     }
 
-    /* --- DataWrapper chart container --- */
     .chart {
       margin: 2em 0;
-    }
-
-    /* --- Caption under a chart or image --- */
-    .caption {
-      font-size: 0.78em;
-      color: #888888;
-      text-align: center;
-      margin-top: -1em;
-      margin-bottom: 2em;
     }
 
     .hero {
@@ -115,15 +93,11 @@
     .hero-overlay {
       background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.80) 0%,
-        rgba(0, 0, 0, 0.0) 60%
+        rgba(0, 0, 0, 0.85) 0%,    
+        rgba(0, 0, 0, 0.15) 100%   
       );
       width: 100%;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-end;
       padding: 3em 1.5em 2.5em;
-      box-sizing: border-box;
     }
 
   
@@ -161,12 +135,8 @@
       line-height: 1.8;
     }
 
-    a {
-      color: #461169;
-    }
-
     .footer a {
-      color: #461169;
+      color: #555555;
     }
 
     .fade-in {
@@ -219,7 +189,7 @@
     </p>
 
     <p class="fade-in"> 
-      Last November, professionals from major American ballet companies told the <a href="https://www.nytimes.com/2025/11/17/arts/dance/dancers-ballet-mental-health-therapy.html" target="_blank">New York Times</a> that their workplaces are beginning to pay closer attention to mental health, slowly moving away from the culture of relentless endurance.
+      Last November, professionals from major American ballet companies told the New York Times that their workplaces are beginning to pay closer attention to mental health, slowly moving away from the culture of relentless endurance.
     </p>
 
     <p class="fade-in"> 
@@ -255,13 +225,7 @@
   <div class="content">
 
     <div class="chart fade-in">
-
-      <div style="background:#f4f4f4; height:400px; display:flex;
-                  align-items:center; justify-content:center;
-                  color:#aaaaaa; font-size:0.85em; font-style:italic;">
-        DataWrapper chart 2 goes here
-      </div>
-
+      <div style="min-height:393px" id="datawrapper-vis-PxOuU"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/PxOuU/embed.js" charset="utf-8" data-target="#datawrapper-vis-PxOuU"></script><noscript><img src="https://datawrapper.dwcdn.net/PxOuU/full.png" alt="Mental Health Rates Are Higher Among Ballet Dancers (Grouped Bars)" /></noscript></div>
     </div>
 
     <p class="fade-in">
@@ -284,7 +248,7 @@
 
 
   <div class="footer">
-    <p>Photo credits: Hero photo by <a href="https://unsplash.com/@simonboxus" target="_blank">Simon Boxus</a> / Unsplash &nbsp;&middot;&nbsp; Dagmar Rothschild</p>
+    <p>Photo credits: <a href="https://unsplash.com/@simonboxus" target="_blank">Simon Boxus</a> / Unsplash &nbsp;&middot;&nbsp; Dagmar Rothschild</p>
     <p>&copy; 2026 &mdash; Luiza Swierzawska</p>
   </div>
 
