@@ -1,515 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!--
+  =====================================================================
+  HEALTH AMONG BALLET DANCERS
+  =====================================================================
+  HOW THIS PAGE IS BUILT:
+  The page has 5 parts, in order from top to bottom:
+
+    1. HEAD       — invisible settings (fonts, styles, title)
+    2. HERO       — full-screen opening photo with the title on top
+    3. CONTENT    — your article text + first chart (centered column)
+    4. PHOTO BREAK — a second full-width photo in the middle of the page
+    5. CONTENT    — more text + second chart
+    6. FOOTER     — sources at the bottom
+
+  To edit text: find the part you want and change what's inside the tags.
+  To swap a photo: find background-image: url('...') and change the URL.
+  =====================================================================
+-->
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- The title that appears in the browser tab -->
   <title>Health Among Ballet Dancers</title>
-  <meta name="description" content="A data-driven investigation into the health challenges facing elite ballet dancers.">
+
+  <!-- Makes the page look correct on phones -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts — loads Lora (the serif font used for headlines) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* =====================================================================
+       STYLES — this section controls how everything looks.
+       Each block has a comment explaining what it does.
+       ===================================================================== */
 
-    :root {
-      --black:    #0a0a0a;
-      --dark:     #0e0818;
-      --purple:   #7c3aed;
-      --purple-m: #a855f7;
-      --purple-l: #c084fc;
-      --purple-xl:#e9d5ff;
-      --white:    #faf5ff;
-      --muted:    #c4b5fd;
-      --serif:    'Playfair Display', Georgia, serif;
-      --body:     'Source Serif 4', Georgia, serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
+    /* --- Base styles: applies to the whole page --- */
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--body);
-      font-size: 18px;
-      line-height: 1.75;
-      overflow-x: hidden;
+      margin: 0;                          /* no white gap around the edges */
+      background-color: #ffffff;          /* white background */
+      color: #1a1a1a;                     /* near-black text */
+      font-family: Georgia, serif;        /* serif font for body text */
+      font-size: 19px;
+      line-height: 1.7;                   /* spacing between lines */
+      text-rendering: optimizeLegibility;
     }
 
-    /* ── PROGRESS BAR ── */
-    #progress {
-      position: fixed; top: 0; left: 0; height: 3px; width: 0;
-      background: linear-gradient(to right, var(--purple), var(--purple-l));
-      z-index: 200; transition: width 0.1s linear;
+    /* --- The centered text column (640px wide, centered) --- */
+    .content {
+      max-width: 640px;    /* maximum width of the text column */
+      margin: 0 auto;      /* auto left/right margin = centers it */
+      padding: 0 1.2em;    /* small side padding on mobile */
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.1rem 2.5rem;
-      transition: background 0.4s ease, border-color 0.4s ease;
-      border-bottom: 1px solid transparent;
+    /* --- Main headline --- */
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 2.8em;
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 0.3em 0;
+      color: #000000;
     }
-    nav.scrolled {
-      background: rgba(10, 8, 24, 0.92);
-      backdrop-filter: blur(12px);
-      border-color: rgba(124, 58, 237, 0.2);
-    }
-    .nav-brand {
-      font-family: var(--serif); font-size: 0.95rem; font-weight: 700;
-      color: var(--white); text-decoration: none; letter-spacing: 0.03em;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--purple-l); }
-    @media (max-width: 640px) { .nav-links { display: none; } }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-      /* Replace this URL with your ballet photo */
-      background-image: url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=1920&q=80');
-      background-size: cover; background-position: center;
-      background-attachment: fixed;
-      background-color: var(--dark);
+    /* --- Section headings inside the article --- */
+    h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.4em;
+      font-weight: 700;
+      margin: 1.8em 0 0.4em 0;
+      color: #000000;
     }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(10,8,24,0.55) 0%,
-        rgba(30,10,60,0.78) 40%,
-        rgba(10,8,24,0.96) 100%
-      );
+
+    /* --- Regular paragraphs --- */
+    p {
+      margin: 0 0 1.2em 0;
     }
-    .hero-inner {
-      position: relative; z-index: 1;
-      text-align: center; padding: 2rem;
-      max-width: 880px; margin: 0 auto;
-    }
-    .kicker {
-      display: inline-block;
-      font-family: var(--body); font-size: 0.72rem;
-      font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--purple-l); border: 1px solid rgba(192, 132, 252, 0.45);
-      padding: 0.32rem 1rem; border-radius: 2px; margin-bottom: 1.6rem;
-    }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 7.5vw, 5.8rem);
-      font-weight: 900; line-height: 1.06;
-      color: var(--white); margin-bottom: 1.5rem;
-      letter-spacing: -0.015em;
-    }
-    .hero h1 em { font-style: italic; color: var(--purple-xl); }
-    .hero .subtitle {
-      font-size: clamp(1rem, 2.2vw, 1.22rem);
-      color: var(--muted); max-width: 540px; margin: 0 auto 1.4rem;
-      font-weight: 300; line-height: 1.65;
-    }
+
+    /* --- The byline (author + date line under the title) --- */
     .byline {
-      font-size: 0.82rem; color: rgba(196,181,253,0.65);
-      letter-spacing: 0.1em; margin-bottom: 3.5rem;
-    }
-    .scroll-prompt {
-      display: inline-flex; flex-direction: column;
-      align-items: center; gap: 0.45rem;
-      color: rgba(196,181,253,0.6); font-size: 0.72rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      animation: nudge 2.4s ease-in-out infinite;
-    }
-    .scroll-prompt svg { width: 22px; height: 22px; }
-    @keyframes nudge {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(9px); }
+      font-size: 0.8em;
+      color: #888888;           /* light gray */
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2em;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0.6em 0;
     }
 
-    /* ── INTRO BAND ── */
-    .intro-band {
-      background: linear-gradient(to bottom, var(--dark), #100920);
-      padding: 6rem 2rem 5rem;
-      position: relative;
+    /* --- The short italic intro paragraph --- */
+    .intro {
+      font-style: italic;
+      font-size: 1.1em;
+      color: #333333;
+      border-left: 3px solid #000000;  /* black left border */
+      padding-left: 1em;
+      margin-bottom: 1.8em;
     }
-    .prose {
-      max-width: 660px; margin: 0 auto;
-    }
-    .prose p { margin-bottom: 1.45em; color: rgba(250,245,255,0.87); }
-    .prose p.lead {
-      font-size: 1.28rem; font-weight: 300;
-      color: var(--white); line-height: 1.68;
-    }
-    .prose p + p { text-indent: 0; }
 
-    /* ── CHAPTER SECTIONS ── */
-    .chapter {
-      position: relative; min-height: 100vh;
-      background-size: cover; background-position: center;
-      background-attachment: fixed;
-      display: flex; align-items: center;
+    /* --- A large pull quote (striking stat or sentence) --- */
+    .pullquote {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.6em;
+      font-style: italic;
+      line-height: 1.4;
+      color: #000000;
+      border-top: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+      padding: 0.8em 0;
+      margin: 1.8em 0;
     }
-    .chapter-overlay {
-      position: absolute; inset: 0;
+
+    /* --- DataWrapper chart container --- */
+    .chart {
+      margin: 2em 0;
+    }
+
+    /* --- Caption under a chart or image --- */
+    .caption {
+      font-size: 0.78em;
+      color: #888888;
+      text-align: center;
+      margin-top: -1em;
+      margin-bottom: 2em;
+    }
+
+    /* =====================================================================
+       HERO PHOTO — the big opening image with the title on top
+       ===================================================================== */
+
+    .hero {
+      /* The photo. HOW TO CHANGE IT:
+         1. Go to: https://unsplash.com/photos/a-black-and-white-photo-of-a-woman-in-a-tutu-nX2W7k9WxzU
+         2. Right-click the photo → "Open image in new tab"
+         3. Copy the URL from the address bar and paste it below */
+      background-image: url('https://images.unsplash.com/photo-1644959791599-cab3a28356cb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;           /* photo fills the full box */
+      background-position: center top;  /* center the photo */
+      background-attachment: fixed;     /* photo stays still as you scroll (parallax) */
+
+      min-height: 100vh;                /* at least as tall as the screen */
+      display: flex;
+      align-items: flex-end;            /* push text to the bottom */
+    }
+
+    /* The dark overlay that goes over the hero photo so text is readable */
+    .hero-overlay {
       background: linear-gradient(
-        150deg, rgba(10,8,24,0.91) 0%, rgba(20,8,40,0.82) 100%
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,    /* dark at the bottom (where title is) */
+        rgba(0, 0, 0, 0.15) 100%   /* light at the top */
       );
-    }
-    /* Each chapter gets a slightly different tint */
-    .chapter:nth-child(odd) .chapter-overlay {
-      background: linear-gradient(
-        150deg, rgba(10,8,24,0.93) 0%, rgba(14,6,34,0.85) 100%
-      );
-    }
-    .chapter:nth-child(even) .chapter-overlay {
-      background: linear-gradient(
-        150deg, rgba(12,5,26,0.92) 0%, rgba(25,8,50,0.83) 100%
-      );
-    }
-    .chapter-inner {
-      position: relative; z-index: 1;
-      max-width: 700px; margin: 0 auto;
-      padding: 8rem 2rem;
-    }
-    .ch-label {
-      font-family: var(--body); font-size: 0.7rem;
-      font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase;
-      color: var(--purple-m); margin-bottom: 1.1rem; display: block;
-    }
-    .chapter h2 {
-      font-family: var(--serif);
-      font-size: clamp(2.1rem, 4.5vw, 3.4rem);
-      font-weight: 700; line-height: 1.1;
-      color: var(--white); margin-bottom: 2.2rem;
-    }
-    .chapter h2 em { font-style: italic; color: var(--purple-xl); }
-    .chapter p { color: rgba(250,245,255,0.86); margin-bottom: 1.4em; }
-
-    /* ── STAT CALLOUT ── */
-    .stat {
-      border-left: 3px solid var(--purple);
-      padding: 1.4rem 1.8rem;
-      margin: 2.5rem 0;
-      background: rgba(124, 58, 237, 0.09);
-      border-radius: 0 6px 6px 0;
-    }
-    .stat-num {
-      font-family: var(--serif);
-      font-size: clamp(3.2rem, 8vw, 5.2rem);
-      font-weight: 900; color: var(--purple-l);
-      line-height: 1; display: block;
-    }
-    .stat-desc {
-      font-size: 0.93rem; color: var(--muted);
-      margin-top: 0.35rem; display: block; line-height: 1.5;
-    }
-    .stat-desc small { font-size: 0.8em; opacity: 0.75; display: block; margin-top: 0.2em; }
-
-    /* ── PULL QUOTE ── */
-    .pull-quote {
-      font-family: var(--serif);
-      font-size: clamp(1.15rem, 2.4vw, 1.6rem);
-      font-style: italic; font-weight: 400;
-      color: var(--white); line-height: 1.55;
-      padding: 2rem 0;
-      border-top: 1px solid rgba(168,85,247,0.3);
-      border-bottom: 1px solid rgba(168,85,247,0.3);
-      margin: 2.5rem 0; list-style: none;
+      width: 100%;
+      padding: 3em 1.5em 2.5em;
     }
 
-    /* ── CHART PLACEHOLDER ── */
-    .chart-box {
-      background: rgba(124,58,237,0.05);
-      border: 1px dashed rgba(124,58,237,0.35);
-      border-radius: 8px; padding: 3.5rem 2rem;
-      text-align: center; margin: 2.5rem 0;
-      color: var(--muted);
-    }
-    .chart-box .ch-title {
-      font-weight: 600; color: var(--purple-l);
-      margin-bottom: 0.4rem; font-size: 0.95rem;
-      letter-spacing: 0.04em;
-    }
-    .chart-box p { font-size: 0.85rem; color: rgba(196,181,253,0.6); margin: 0; }
-
-    /* ── DIVIDER BAND ── */
-    .band {
-      background: linear-gradient(to bottom, #100920, #0e0818);
-      padding: 4rem 2rem;
-    }
-    .band .prose p { font-style: italic; color: rgba(250,245,255,0.7); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #080612;
-      border-top: 1px solid rgba(124,58,237,0.18);
-      padding: 5rem 2rem 3rem;
-    }
-    footer .inner { max-width: 660px; margin: 0 auto; }
-    footer h3 {
-      font-family: var(--serif); font-size: 1rem; font-weight: 700;
-      color: var(--purple-m); margin-bottom: 1.2rem;
-      letter-spacing: 0.06em; text-transform: uppercase;
-    }
-    footer p, footer li {
-      font-size: 0.87rem; color: var(--muted); line-height: 1.75;
-    }
-    footer ul { list-style: none; margin-bottom: 2.5rem; }
-    footer ul li + li { margin-top: 0.7rem; }
-    footer a { color: var(--purple-l); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    footer .copy {
-      font-size: 0.78rem; color: rgba(196,181,253,0.38);
-      margin-top: 2.5rem; padding-top: 2rem;
-      border-top: 1px solid rgba(124,58,237,0.12);
+    /* The title and subtitle inside the hero */
+    .hero h1 {
+      color: #ffffff;    /* white text on the dark overlay */
+      font-size: 3.2em;
+      margin-bottom: 0.2em;
     }
 
-    /* ── REVEAL ANIMATIONS ── */
-    .reveal {
-      opacity: 0; transform: translateY(38px);
-      transition:
-        opacity  0.9s cubic-bezier(0.22,1,0.36,1),
-        transform 0.9s cubic-bezier(0.22,1,0.36,1);
+    .hero .subtitle {
+      color: rgba(255, 255, 255, 0.75);   /* slightly transparent white */
+      font-size: 1.1em;
+      font-style: italic;
+      font-family: 'Lora', Georgia, serif;
+      margin: 0;
     }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: 0.12s; }
-    .d2 { transition-delay: 0.24s; }
-    .d3 { transition-delay: 0.36s; }
-    .d4 { transition-delay: 0.48s; }
 
+    /* =====================================================================
+       PHOTO BREAK — the second photo that appears in the middle of the page
+       ===================================================================== */
+
+    .photo-break {
+      background-image: url('photo2.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;     /* same parallax effect */
+
+      height: 60vh;                     /* 60% of screen height */
+      margin: 3em 0;
+    }
+
+    /* =====================================================================
+       FOOTER
+       ===================================================================== */
+
+    .footer {
+      background: #f4f4f4;
+      text-align: center;
+      font-size: 0.78em;
+      color: #888888;
+      margin-top: 4em;
+      padding: 3em 1.5em;
+      line-height: 1.8;
+    }
+
+    .footer a {
+      color: #555555;
+    }
+
+    /* =====================================================================
+       FADE-IN ANIMATION — elements with class "fade-in" start invisible
+       and appear when you scroll to them.
+       To use it: add class="fade-in" to any element.
+       ===================================================================== */
+
+    .fade-in {
+      opacity: 0;                            /* starts invisible */
+      transform: translateY(20px);           /* starts slightly lower */
+      transition: opacity 0.8s ease,
+                  transform 0.8s ease;       /* smooth transition */
+    }
+
+    .fade-in.visible {
+      opacity: 1;                            /* becomes visible */
+      transform: translateY(0);             /* moves to normal position */
+    }
+
+    /* On phones: remove the fixed background (it doesn't work well on mobile) */
     @media (max-width: 640px) {
-      .hero, .chapter { background-attachment: scroll; }
+      .hero, .photo-break {
+        background-attachment: scroll;
+      }
+      .hero h1 { font-size: 2.2em; }
     }
+
   </style>
 </head>
+
 <body>
 
-<div id="progress"></div>
+  <!-- ==================================================================
+       1. HERO — opening full-screen photo with title
+       ================================================================== -->
 
-<!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero" id="top">
-  <div class="hero-inner">
-    <h1 class="reveal">Health Among<br><em>Ballet Dancers</em></h1>
-    <p class="subtitle reveal d2">
-      [Your subtitle — one sentence capturing the central argument of your story]
+  <div class="hero">
+    <div class="hero-overlay">
+      <div class="content">
+        <h1>Health Among Ballet Dancers</h1>
+        <p class="subtitle">
+          [Your one-sentence subtitle goes here]
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================================================================
+       2. ARTICLE TEXT — first half
+       ================================================================== -->
+
+  <div class="content">
+
+    <!-- Byline: your name and the date -->
+    <p class="byline">By [Your Name] &nbsp;&middot;&nbsp; [Date]</p>
+
+    <!-- Intro paragraph: italic, with left border -->
+    <p class="intro fade-in">
+      [Your opening paragraph goes here. Make it punchy — one or two
+      sentences that pull the reader in.]
     </p>
-    <p class="byline reveal d3">By [Your Name] &nbsp;·&nbsp; [Date]</p>
-    <div class="scroll-prompt reveal d4">
-      <span>Scroll</span>
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/>
-      </svg>
+
+    <!-- Regular paragraphs: just write your text between the p tags -->
+    <p class="fade-in">
+      [Paragraph 1. Replace this with your own text. Each paragraph
+      goes inside its own set of &lt;p&gt;&lt;/p&gt; tags.]
+    </p>
+
+    <p class="fade-in">
+      [Paragraph 2. You can have as many paragraphs as you need.]
+    </p>
+
+    <!-- Pull quote: a striking sentence or stat -->
+    <p class="pullquote fade-in">
+      &ldquo;[A striking sentence, statistic, or finding from your story]&rdquo;
+    </p>
+
+    <p class="fade-in">
+      [Paragraph 3. Text that leads into your first chart.]
+    </p>
+
+
+    <!-- ==============================================================
+         CHART 1 — paste your DataWrapper embed code here.
+         HOW TO EMBED A DATAWRAPPER CHART:
+           1. In DataWrapper, click Publish
+           2. Click "Embed" and copy the iframe code
+           3. Paste it between the <div class="chart"> tags below
+         ============================================================== -->
+    <div class="chart fade-in">
+
+      <!-- PASTE YOUR FIRST DATAWRAPPER EMBED HERE — it will look like:
+           <iframe title="..." src="https://datawrapper.dwcdn.net/..." ...></iframe>
+           For now there is a placeholder box below: -->
+      <div style="background:#f4f4f4; height:400px; display:flex;
+                  align-items:center; justify-content:center;
+                  color:#aaaaaa; font-size:0.85em; font-style:italic;">
+        DataWrapper chart 1 goes here
+      </div>
+
     </div>
-  </div>
-</section>
+    <p class="caption">Chart caption: describe what the chart shows.</p>
 
-<!-- ═══════════════ INTRO ═══════════════ -->
-<div class="intro-band">
-  <div class="prose">
-    <p class="lead reveal">[Opening paragraph — your hook. A striking detail, scene, or statistic that draws the reader in and makes them want to keep reading.]</p>
-    <p class="reveal d1">[Second paragraph — introduce the scope of the investigation. What questions are you trying to answer? Which studies are you drawing on?]</p>
-    <p class="reveal d2">[Third paragraph — brief roadmap of the story ahead. What will the reader discover as they scroll?]</p>
-  </div>
-</div>
+    <p class="fade-in">
+      [Paragraph 4. Your text continues here after the first chart.]
+    </p>
 
-<!-- ═══════════════ CHAPTER 1 — INJURIES ═══════════════ -->
-<section class="chapter" id="injuries"
-  style="background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1920&q=80'); background-color:#0e0818;">
-  <div class="chapter-overlay"></div>
-  <div class="chapter-inner">
-    <span class="ch-label reveal">Chapter 01 — Physical Health</span>
-    <h2 class="reveal d1">Almost Everyone<br><em>Gets Hurt</em></h2>
+    <p class="fade-in">
+      [Paragraph 5.]
+    </p>
 
-    <div class="stat reveal d2">
-      <span class="stat-num">89.4%</span>
-      <span class="stat-desc">of collegiate dancers reported a history of injury
-        <small>Collegiate Dancer Wellness Survey · n = 198</small>
-      </span>
+  </div><!-- end .content -->
+
+
+  <!-- ==================================================================
+       3. PHOTO BREAK — full-width photo in the middle of the page
+          To replace: download your Lightroom photo, name it photo2.jpg,
+          put it in this folder, then change the background-image URL
+          in the .photo-break style above.
+       ================================================================== -->
+
+  <div class="photo-break"></div>
+
+
+  <!-- ==================================================================
+       4. ARTICLE TEXT — second half
+       ================================================================== -->
+
+  <div class="content">
+
+    <h2 class="fade-in">[Section heading — optional]</h2>
+
+    <p class="fade-in">
+      [Paragraph 6. Text after the photo break.]
+    </p>
+
+    <p class="fade-in">
+      [Paragraph 7.]
+    </p>
+
+    <p class="fade-in">
+      [Paragraph 8. Text leading into your second chart.]
+    </p>
+
+
+    <!-- ==============================================================
+         CHART 2 — same as above, paste your second DataWrapper embed here
+         ============================================================== -->
+    <div class="chart fade-in">
+
+      <div style="background:#f4f4f4; height:400px; display:flex;
+                  align-items:center; justify-content:center;
+                  color:#aaaaaa; font-size:0.85em; font-style:italic;">
+        DataWrapper chart 2 goes here
+      </div>
+
     </div>
+    <p class="caption">Chart caption: describe what the chart shows.</p>
 
-    <p class="reveal d3">[Your text about injuries goes here. Key data: 89.4% injury history, 51.5% had an active injury at the time of the survey. Ankle/foot most affected at 72.7%, followed by lower leg/shin (38.4%) and knee (30.8%).]</p>
+    <p class="fade-in">
+      [Paragraph 9. Closing thoughts.]
+    </p>
 
-    <div class="chart-box reveal d4">
-      <div class="ch-title">Chart: Injury Prevalence &amp; Locations</div>
-      <p>Paste your DataWrapper embed or export your ggplot2 chart here</p>
-    </div>
+    <p class="fade-in">
+      [Paragraph 10. Final sentence.]
+    </p>
 
-    <blockquote class="pull-quote reveal">"[Pull quote or key finding — a striking sentence from the data or a source]"</blockquote>
+  </div><!-- end .content -->
 
-    <p class="reveal">[Closing paragraph for Chapter 1 — begin bridging to mental health consequences of injury.]</p>
+
+  <!-- ==================================================================
+       5. FOOTER — sources and credits
+       ================================================================== -->
+
+  <div class="footer">
+    <p>
+      <strong>Sources</strong><br>
+      Arcelus et al. (2021). Frontiers in Nutrition.
+      <a href="https://doi.org/10.3389/fnut.2021.665654" target="_blank">doi.org/10.3389/fnut.2021.665654</a><br>
+      Collegiate Dancer Wellness Survey.
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10456971/" target="_blank">PMC10456971</a><br>
+      Lehbil et al. (2025). Science &amp; Sports.
+      <a href="https://doi.org/10.1016/j.scispo.2024.10.006" target="_blank">doi.org/10.1016/j.scispo.2024.10.006</a>
+    </p>
+    <p>Photos: <a href="https://unsplash.com" target="_blank">Unsplash</a></p>
   </div>
-</section>
 
-<div class="band">
-  <div class="prose">
-    <p class="reveal">[Bridging paragraph — connecting physical injuries to the mental health toll. The data show injury and mental health are statistically linked (p = 0.033 to 0.039).]</p>
-  </div>
-</div>
 
-<!-- ═══════════════ CHAPTER 2 — MENTAL HEALTH ═══════════════ -->
-<section class="chapter" id="mental-health"
-  style="background-image: url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=1920&q=80'); background-color:#0e0818;">
-  <div class="chapter-overlay"></div>
-  <div class="chapter-inner">
-    <span class="ch-label reveal">Chapter 02 — Mental Health</span>
-    <h2 class="reveal d1">A Hidden<br><em>Mental Health Crisis</em></h2>
+  <!-- ==================================================================
+       JAVASCRIPT — makes the fade-in animation work.
+       This runs once the page loads. You don't need to change this.
 
-    <div class="stat reveal d2">
-      <span class="stat-num">35.4%</span>
-      <span class="stat-desc">reported depression or anxiety — roughly <strong style="color:var(--purple-xl)">3×</strong> the general college population rate
-        <small>Collegiate Dancer Wellness Survey · n = 198</small>
-      </span>
-    </div>
+       How it works in plain English:
+         1. Find every element that has class="fade-in"
+         2. Watch each one — when it enters the screen, add class "visible"
+         3. The CSS then makes "visible" elements appear smoothly
+       ================================================================== -->
+  <script>
+    const fadeElements = document.querySelectorAll('.fade-in')
 
-    <p class="reveal d3">[Your text about mental health goes here. Key data: 39.9% reported feeling anxious or nervous, 22.2% felt sad or depressed, 10.1% lacked hopefulness, 1% experienced suicidal ideation. 37.4% expressed interest in mental health support — suggesting significant unmet need.]</p>
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+        }
+      })
+    }, { threshold: 0.1 })
 
-    <div class="chart-box reveal d4">
-      <div class="ch-title">Chart: Mental Health Symptoms &amp; Comparison to General College Students</div>
-      <p>Paste your DataWrapper embed or export your ggplot2 chart here</p>
-    </div>
+    fadeElements.forEach(function(el) {
+      observer.observe(el)
+    })
+  </script>
 
-    <blockquote class="pull-quote reveal">"[Pull quote or key finding]"</blockquote>
-
-    <p class="reveal">[Closing paragraph — transition to eating disorders and body image.]</p>
-  </div>
-</section>
-
-<div class="band">
-  <div class="prose">
-    <p class="reveal">[Bridging paragraph — connecting mental health to disordered eating and body image. Both are symptoms of a culture that treats the body primarily as an instrument to be perfected.]</p>
-  </div>
-</div>
-
-<!-- ═══════════════ CHAPTER 3 — BODY IMAGE ═══════════════ -->
-<section class="chapter" id="body-image"
-  style="background-image: url('https://images.unsplash.com/photo-1571689936297-e8bd55db5e30?auto=format&fit=crop&w=1920&q=80'); background-color:#0e0818;">
-  <div class="chapter-overlay"></div>
-  <div class="chapter-inner">
-    <span class="ch-label reveal">Chapter 03 — Body Image &amp; Eating Disorders</span>
-    <h2 class="reveal d1">The Body as<br><em>Instrument and Burden</em></h2>
-
-    <div class="stat reveal d2">
-      <span class="stat-num">57.1%</span>
-      <span class="stat-desc">desired a body shape leaner than what they themselves considered healthy
-        <small>Arcelus et al. (2021) · n = 14 classical ballet dancers</small>
-      </span>
-    </div>
-
-    <p class="reveal d3">[Your text about eating disorders and body image goes here. You can draw on all three studies: Arcelus 2021 (50% body dissatisfaction, 50% bulimic symptoms), the collegiate survey (9.1% ED history, 11.6% regularly losing weight for dance), and the Paris Opera study (47.4% ED history among those with menstrual disorders).]</p>
-
-    <div class="chart-box reveal d4">
-      <div class="ch-title">Chart: Body Image Dissatisfaction &amp; Eating Disorder Symptoms</div>
-      <p>Paste your DataWrapper embed or export your ggplot2 chart here</p>
-    </div>
-
-    <blockquote class="pull-quote reveal">"[Pull quote or key finding]"</blockquote>
-
-    <p class="reveal">[Closing paragraph — transition to the physical consequences of disordered eating: menstrual health.]</p>
-  </div>
-</section>
-
-<div class="band">
-  <div class="prose">
-    <p class="reveal">[Bridging paragraph — introduce the RED-S framework. Eating disorder history and low energy availability are not just psychological concerns — they disrupt the body's most fundamental biological functions.]</p>
-  </div>
-</div>
-
-<!-- ═══════════════ CHAPTER 4 — MENSTRUAL HEALTH ═══════════════ -->
-<section class="chapter" id="menstrual"
-  style="background-image: url('https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1920&q=80'); background-color:#0e0818;">
-  <div class="chapter-overlay"></div>
-  <div class="chapter-inner">
-    <span class="ch-label reveal">Chapter 04 — Menstrual Health</span>
-    <h2 class="reveal d1">When the Body<br><em>Stops Functioning</em></h2>
-
-    <div class="stat reveal d2">
-      <span class="stat-num">71%</span>
-      <span class="stat-desc">of Paris Opera dancers had a history of menstrual cycle disorder
-        <small>Lehbil et al. (2025) · n = 83 elite ballet dancers</small>
-      </span>
-    </div>
-
-    <p class="reveal d3">[Your text about menstrual health goes here. Key data: 71% any cycle disorder, 50% late menarche or primary amenorrhea, 28.9% secondary amenorrhea, 47.4% ED history among those with cycle disorders (p = 0.007). Context: general population secondary amenorrhea ~3–5%; ballet literature 19–44%.]</p>
-
-    <div class="chart-box reveal d4">
-      <div class="ch-title">Chart: Menstrual Disorder Prevalence &amp; ED Association (p = 0.007)</div>
-      <p>Paste your DataWrapper embed or export your ggplot2 chart here</p>
-    </div>
-
-    <blockquote class="pull-quote reveal">"[Pull quote or key finding]"</blockquote>
-
-    <p class="reveal">[Closing paragraph — RED-S pathway: eating disorder → energy deficiency → hypothalamic suppression → amenorrhea → hypoestrogenism → osteoporosis / stress fracture risk.]</p>
-  </div>
-</section>
-
-<div class="band">
-  <div class="prose">
-    <p class="reveal">[Bridging paragraph — what do all four chapters have in common? What systemic force runs through all of them? Set up the conclusion.]</p>
-  </div>
-</div>
-
-<!-- ═══════════════ CHAPTER 5 — CONCLUSION ═══════════════ -->
-<section class="chapter" id="conclusion"
-  style="background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1920&q=80'); background-color:#0e0818;">
-  <div class="chapter-overlay"
-    style="background: linear-gradient(150deg, rgba(10,8,24,0.95) 0%, rgba(40,10,80,0.8) 100%);">
-  </div>
-  <div class="chapter-inner">
-    <span class="ch-label reveal">Chapter 05 — The Way Forward</span>
-    <h2 class="reveal d1"><em>What Needs<br>to Change</em></h2>
-
-    <p class="reveal d2">[Your conclusion goes here — what do these four chapters collectively tell us? What systemic changes are needed in how dance institutions screen, support, and protect dancer health?]</p>
-    <p class="reveal d3">[Second paragraph — what the research calls for: routine screening for injury, mental health, eating disorders, and menstrual health before and throughout dance programs.]</p>
-    <p class="reveal d4">[Final sentence — a closing thought that resonates beyond the data.]</p>
-  </div>
-</section>
-
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer>
-  <div class="inner">
-    <h3>Data Sources</h3>
-    <ul>
-      <li>Arcelus, J. et al. (2021). <em>Qualitative and Quantitative Exploration of Eating Disorders and Disordered Eating Behaviors in Classic Ballet.</em> Frontiers in Nutrition, 8.
-        <a href="https://doi.org/10.3389/fnut.2021.665654" target="_blank">DOI: 10.3389/fnut.2021.665654</a>
-      </li>
-      <li>Collegiate Dancer Wellness Survey.
-        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10456971/" target="_blank">PMC10456971</a>
-      </li>
-      <li>Lehbil, S., Couillandre, A., Dreyfus, M. et al. (2025). <em>Menstrual cycle disorders among elite ballet dancers.</em> Science &amp; Sports, 40(2–4).
-        <a href="https://doi.org/10.1016/j.scispo.2024.10.006" target="_blank">DOI: 10.1016/j.scispo.2024.10.006</a>
-      </li>
-    </ul>
-    <h3>Methodology</h3>
-    <p>[Describe how you gathered and analysed the data, and which tools were used for the visualisations.]</p>
-    <h3>About</h3>
-    <p>[A sentence or two about you and the context in which this was made.]</p>
-    <p class="copy">© 2025 [Your Name] &nbsp;·&nbsp; Images via <a href="https://unsplash.com" target="_blank">Unsplash</a></p>
-  </div>
-</footer>
-
-<script>
-  // ── Scroll reveal ──
-  const els = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  els.forEach(el => obs.observe(el));
-
-  // ── Progress bar ──
-  const bar = document.getElementById('progress');
-  window.addEventListener('scroll', () => {
-    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-    bar.style.width = pct + '%';
-  }, { passive: true });
-
-  // ── Sticky nav ──
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-</script>
 </body>
 </html>
