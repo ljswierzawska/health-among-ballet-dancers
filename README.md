@@ -1,35 +1,24 @@
-# Health Among Ballet Dancers
+# Can Ballet Ever Be Healthy?
 
-A scrollytelling data journalism piece investigating the health challenges — physical, mental, and hormonal — facing elite and collegiate ballet dancers.
+A data journalism story by **Luiza Swierzawska** exploring the physical and mental health toll on professional ballet dancers.
 
-**Live site:** https://ljswierzawska.github.io/health-among-ballet-dancers/
+## About
 
-## Structure
+Behind the grace of ballet lies a profession marked by chronic injury, disordered eating, and mental health struggles that research is only beginning to quantify. This story draws on interviews and peer-reviewed studies to ask whether the dance world is finally catching up with contemporary wellness standards — or whether it remains rooted in a culture of relentless endurance.
 
-- `index.html` — the full scrollytelling story (add your text and charts here)
+## Data Sources
 
-## How to customize
+- **Junge, A. & Hauschild, A. (2023).** "Behind the Curtain: Prevalence of Symptoms of Depression, Generalised Anxiety and Eating Disorders in 147 Professional Dancers." *Sports Medicine – Open.* [doi.org/10.1186/s40798-023-00638-9](https://doi.org/10.1186/s40798-023-00638-9)
 
-### Add your own background photos
-Each `.chapter` section has a `background-image` URL. Replace the Unsplash URLs with your own ballet photos:
-```html
-<section class="chapter" style="background-image: url('your-photo.jpg'); ...">
-```
+- **Junge, A. et al. (2024).** "Health Problems of Professional Ballet Dancers: an Analysis of 1,627 Weekly Self-Reports." *Sports Medicine – Open.* [doi.org/10.1186/s40798-024-00753-1](https://doi.org/10.1186/s40798-024-00753-1)
 
-### Embed your ggplot2 charts
-Export your R charts as PNG and replace the `<div class="chart-box">` placeholders:
-```html
-<div class="chart-box">
-  <img src="charts/your-chart.png" alt="Chart description" style="width:100%; border-radius:6px;">
-</div>
-```
-Or embed a DataWrapper iframe directly inside `.chart-box`.
+- **Arcelus, J. et al. (2021).** "Eating Disorders in Dancers." *Frontiers in Nutrition.* [doi.org/10.3389/fnut.2021.665654](https://doi.org/10.3389/fnut.2021.665654)
 
-### Fill in your text
-Search for `[` in the file — every bracketed placeholder is text you need to write.
+## Photo Credits
 
-## Data sources
+- Hero photo: [Simon Boxus](https://unsplash.com/@simonboxus) / Unsplash
+- Second photo: Dagmar Rothschild
 
-- Arcelus et al. (2021). *Eating Disorders in Classic Ballet.* Frontiers in Nutrition. https://doi.org/10.3389/fnut.2021.665654
-- Collegiate Dancer Wellness Survey. https://pmc.ncbi.nlm.nih.gov/articles/PMC10456971/
-- Lehbil et al. (2025). *Menstrual cycle disorders among elite ballet dancers.* Science & Sports. https://doi.org/10.1016/j.scispo.2024.10.006
+## Live Story
+
+[ljswierzawska.github.io/health-among-ballet-dancers](https://ljswierzawska.github.io/health-among-ballet-dancers/)
