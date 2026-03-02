@@ -28,7 +28,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- No external fonts needed — using Georgia which is built into every computer -->
+  <!-- Google Fonts — loads Lora (the serif font used for headlines) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* =====================================================================
@@ -41,8 +44,8 @@
       margin: 0;                          /* no white gap around the edges */
       background-color: #ffffff;          /* white background */
       color: #1a1a1a;                     /* near-black text */
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 20px;
+      font-family: Georgia, serif;        /* serif font for body text */
+      font-size: 19px;
       line-height: 1.7;                   /* spacing between lines */
       text-rendering: optimizeLegibility;
     }
@@ -56,7 +59,7 @@
 
     /* --- Main headline --- */
     h1 {
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: 'Lora', Georgia, serif;
       font-size: 2.8em;
       font-weight: 700;
       line-height: 1.15;
@@ -66,7 +69,7 @@
 
     /* --- Section headings inside the article --- */
     h2 {
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: 'Lora', Georgia, serif;
       font-size: 1.4em;
       font-weight: 700;
       margin: 1.8em 0 0.4em 0;
@@ -102,7 +105,7 @@
 
     /* --- A large pull quote (striking stat or sentence) --- */
     .pullquote {
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: 'Lora', Georgia, serif;
       font-size: 1.6em;
       font-style: italic;
       line-height: 1.4;
@@ -127,15 +130,7 @@
       margin-bottom: 2em;
     }
 
-    /* =====================================================================
-       HERO PHOTO — the big opening image with the title on top
-       ===================================================================== */
-
     .hero {
-      /* The photo. HOW TO CHANGE IT:
-         1. Go to: https://unsplash.com/photos/a-black-and-white-photo-of-a-woman-in-a-tutu-nX2W7k9WxzU
-         2. Right-click the photo → "Open image in new tab"
-         3. Copy the URL from the address bar and paste it below */
       background-image: url('https://images.unsplash.com/photo-1644959791599-cab3a28356cb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
       background-size: cover;           /* photo fills the full box */
       background-position: center top;  /* center the photo */
@@ -168,7 +163,7 @@
       color: rgba(255, 255, 255, 0.75);   /* slightly transparent white */
       font-size: 1.1em;
       font-style: italic;
-      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-family: 'Lora', Georgia, serif;
       margin: 0;
     }
 
@@ -177,17 +172,10 @@
        ===================================================================== */
 
     .photo-break {
-      /* YOUR LIGHTROOM PHOTO GOES HERE.
-         Steps:
-           1. Download the photo from your Lightroom album
-           2. Rename it photo2.jpeg
-           3. Drag it into the health-among-ballet-dancers folder
-           4. Change the URL below to: url('photo2.jpeg')
-         For now a temporary placeholder photo is shown. */
       background-image: url('photo2.jpeg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;     /* photo stays still as you scroll */
+      background-attachment: fixed;     /* same parallax effect */
 
       height: 60vh;                     /* 60% of screen height */
       margin: 3em 0;
@@ -265,12 +253,11 @@
   <div class="content">
 
     <!-- Byline: your name and the date -->
-    <p class="byline">By [Your Name] &nbsp;&middot;&nbsp; [Date]</p>
+    <p class="byline">By Luiza Swierzawska &nbsp;&middot;&nbsp; March 1, 2026</p>
 
     <!-- Intro paragraph: italic, with left border -->
     <p class="intro fade-in">
-      [Your opening paragraph goes here. Make it punchy — one or two
-      sentences that pull the reader in.]
+      Beyond swirling tutus and slender figures moving rhythmically to the sound of Tchaikovsky, ballet has developed associations far removed from grace, instead evoking physical pain, eating disorders, and a troubling disregard for mental health.
     </p>
 
     <!-- Regular paragraphs: just write your text between the p tags -->
