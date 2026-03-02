@@ -28,10 +28,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Fonts — loads Lora (the serif font used for headlines) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- No external fonts needed — using Georgia which is built into every computer -->
 
   <style>
     /* =====================================================================
@@ -44,8 +41,8 @@
       margin: 0;                          /* no white gap around the edges */
       background-color: #ffffff;          /* white background */
       color: #1a1a1a;                     /* near-black text */
-      font-family: Georgia, serif;        /* serif font for body text */
-      font-size: 19px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
       line-height: 1.7;                   /* spacing between lines */
       text-rendering: optimizeLegibility;
     }
@@ -59,7 +56,7 @@
 
     /* --- Main headline --- */
     h1 {
-      font-family: 'Lora', Georgia, serif;
+      font-family: Georgia, 'Times New Roman', Times, serif;
       font-size: 2.8em;
       font-weight: 700;
       line-height: 1.15;
@@ -69,7 +66,7 @@
 
     /* --- Section headings inside the article --- */
     h2 {
-      font-family: 'Lora', Georgia, serif;
+      font-family: Georgia, 'Times New Roman', Times, serif;
       font-size: 1.4em;
       font-weight: 700;
       margin: 1.8em 0 0.4em 0;
@@ -105,7 +102,7 @@
 
     /* --- A large pull quote (striking stat or sentence) --- */
     .pullquote {
-      font-family: 'Lora', Georgia, serif;
+      font-family: Georgia, 'Times New Roman', Times, serif;
       font-size: 1.6em;
       font-style: italic;
       line-height: 1.4;
@@ -171,7 +168,7 @@
       color: rgba(255, 255, 255, 0.75);   /* slightly transparent white */
       font-size: 1.1em;
       font-style: italic;
-      font-family: 'Lora', Georgia, serif;
+      font-family: Georgia, 'Times New Roman', Times, serif;
       margin: 0;
     }
 
@@ -180,10 +177,17 @@
        ===================================================================== */
 
     .photo-break {
-      background-image: url('photo2.jpeg');
+      /* YOUR LIGHTROOM PHOTO GOES HERE.
+         Steps:
+           1. Download the photo from your Lightroom album
+           2. Rename it photo2.jpeg
+           3. Drag it into the health-among-ballet-dancers folder
+           4. Change the URL below to: url('photo2.jpeg')
+         For now a temporary placeholder photo is shown. */
+      background-image: url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;     /* same parallax effect */
+      background-attachment: fixed;     /* photo stays still as you scroll */
 
       height: 60vh;                     /* 60% of screen height */
       margin: 3em 0;
